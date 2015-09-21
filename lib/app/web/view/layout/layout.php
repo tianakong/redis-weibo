@@ -5,6 +5,5 @@
     <title></title>
 </head>
 <body>
-<?php $content;?>
+<?php include $content;?>
 </body>
-</html>

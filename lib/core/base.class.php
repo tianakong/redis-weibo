@@ -2,12 +2,19 @@
 
 class base
 {
+    public $layout = 'layout.php';
+
     /**
      * 公共文件
+     * @param string $content 视图文件
+     * @param array $params 参数 二维数组，key是变量,val是值
      */
-    private function layout($content, $filename)
+    private function layout($content, $params)
     {
-        $view = fendou_lib.'app/'.$GLOBALS['m'] .'/view/'.'layout/'.$filename;
+        if($params) {
+            extract($params);
+        }
+        $view = fendou_lib.'app/'.$GLOBALS['m'] .'/view/'.'layout/'.$this->layout;
         if(file_exists($view)) {
             include $view;
             exit;
@@ -19,24 +26,14 @@ class base
     /**
      * 渲染视图
      */
-    public function display($filename='layout.php')
+    public function display($params = array())
     {
         $view = fendou_lib.'app/'.$GLOBALS['m'] .'/view/'.$GLOBALS['c'] .'/'.$GLOBALS['a'].VIEW_SUFFIX;
         if(file_exists($view)) {
-            $content = include $view;
-            $this->layout($content, $filename);
+            $this->layout($view, $params);
             exit;
         } else {
             exit('模版不存在');
         }
-    }
-
-    /**
-     * 把变量注入到视图中
-     * @param array $data 二维数组，key是变量,val是值
-     */
-    public function assign(array $data)
-    {
-
     }
 }
