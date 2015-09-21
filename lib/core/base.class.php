@@ -5,9 +5,9 @@ class base
     /**
      * 公共文件
      */
-    private function layout($content)
+    private function layout($content, $filename)
     {
-        $view = fendou_lib.'app/'.$GLOBALS['m'] .'/view/'.'layout/layout.php';
+        $view = fendou_lib.'app/'.$GLOBALS['m'] .'/view/'.'layout/'.$filename;
         if(file_exists($view)) {
             include $view;
             exit;
@@ -19,12 +19,12 @@ class base
     /**
      * 渲染视图
      */
-    public function display()
+    public function display($filename='layout.php')
     {
         $view = fendou_lib.'app/'.$GLOBALS['m'] .'/view/'.$GLOBALS['c'] .'/'.$GLOBALS['a'].VIEW_SUFFIX;
         if(file_exists($view)) {
             $content = include $view;
-            $this->layout($content);
+            $this->layout($content, $filename);
             exit;
         } else {
             exit('模版不存在');
