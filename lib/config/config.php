@@ -10,7 +10,7 @@ define('DEFAULT_FUNC', 'index');
 
 
 //定义模版后缀名
-define('VIEW_SUFFIX', '.html');
+define('VIEW_SUFFIX', '.php');
 
 
 //定义版本号
