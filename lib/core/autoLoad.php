@@ -1,8 +1,7 @@
 <?php
-$model_dir      = fendou_lib.'app/'.$GLOBALS['m'] .'/model';
-$controller_dir = fendou_lib.'app/'.$GLOBALS['m'] .'/controller';
-
-$auto_load_dir = array(fendou_lib.'core', $model_dir, $controller_dir);
+$auto_load_dir[]    = fendou_lib.'core';
+$auto_load_dir[]    = fendou_lib.'app/'.$GLOBALS['m'] .'/model';
+$auto_load_dir[]    = fendou_lib.'app/'.$GLOBALS['m'] .'/controller';
 
 function __autoload($className)
 {
